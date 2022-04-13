@@ -1,21 +1,37 @@
 import React from 'react';
-import Arrived from './components/Arrived.js';
-import Asside from './components/Asside.js';
-import Browse from './components/Browse.js';
-import Clients from './components/Clients.js';
-import Footer from './components/Footer.js';
+
 import Header from './components/Header.js';
 import Hero from './components/Hero.js';
+import Browse from './components/Browse.js';
+import Arrived from './components/Arrived.js';
+import Clients from './components/Clients.js';
+import Asside from './components/Asside.js';
+import Footer from './components/Footer.js';
+// import './tailwind.css';
 // import Modal from './components/Modal.js';
-import './tailwind.css';
 
 function App() {
+  const [items, setItems] = React.useState([]);
+
+  React.useEffect(function () {
+    (async function() {
+      const response = await fetch('https://prod-qore-app.qorebase.io/8ySrll0jkMkSJVk/allItems/rows?limit=7&offset=0&$order=asc', {
+        headers: {
+          "Content-Type": "application/json",
+          "accept": "application/json",
+          "x-api-key": process.env.REACT_APP_APIKEY
+        }
+      });
+      const { nodes } = await response.json();
+      setItems(nodes);
+    })(); 
+  }, []);
   return (
     <>
     <Header />
     <Hero />
     <Browse />
-    <Arrived />
+    <Arrived items={items} />
     <Clients />
     <Asside />
     <Footer />

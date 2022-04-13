@@ -6,7 +6,7 @@ module.exports = {
   plugins: [],
   fontFamily: {
     sans: [
-      '"Josefin Sans"'
+      '"Open Sans"'
     ],
   }
 }
