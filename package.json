@@ -25,6 +25,7 @@
   },
   "scripts": {
     "build:tailwind": "tailwind build src/tailwind.css -o src/tailwind.output.css",
+    "watch": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

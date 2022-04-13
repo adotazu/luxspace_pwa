@@ -14,7 +14,7 @@ function App() {
   const [items, setItems] = React.useState([]);
 
   React.useEffect(function () {
-    (async function() {
+    (async function () {
       const response = await fetch('https://prod-qore-app.qorebase.io/8ySrll0jkMkSJVk/allItems/rows?limit=7&offset=0&$order=asc', {
         headers: {
           "Content-Type": "application/json",
